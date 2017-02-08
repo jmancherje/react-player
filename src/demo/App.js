@@ -94,6 +94,7 @@ export default class App extends Component {
       <div className='app'>
         <section className='section'>
           <h1>ReactPlayer Demo</h1>
+          <h3>iFrame:</h3>
           <ReactFrame height="350px" width="500px">
             <ReactPlayer
               ref={player => { this.player = player }}
@@ -119,6 +120,7 @@ export default class App extends Component {
               onDuration={duration => this.setState({ duration })}
             />
           </ReactFrame>
+          <h3>No iFrame:</h3>
           <ReactPlayer
             ref={player => { this.player = player }}
             className='react-player'
@@ -185,13 +187,6 @@ export default class App extends Component {
         </section>
         <section className='section'>
           <table><tbody>
-            <tr>
-              <th>force play</th>
-              <td>
-                <button onClick={ () => this.setState({ playing: true }) }>force play</button>
-                <button onClick={ () => this.setState({ playing: false }) }>force stop</button>
-              </td>
-            </tr>
             <tr>
               <th>YouTube</th>
               <td>
