@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
 import screenfull from 'screenfull'
+import ReactFrame from 'react-frame-component';
 
 import 'normalize.css/normalize.css'
 import './defaults.scss'
@@ -93,6 +94,31 @@ export default class App extends Component {
       <div className='app'>
         <section className='section'>
           <h1>ReactPlayer Demo</h1>
+          <ReactFrame height="350px" width="500px">
+            <ReactPlayer
+              ref={player => { this.player = player }}
+              className='react-player'
+              width={480}
+              height={270}
+              url={url}
+              playing={playing}
+              playbackRate={playbackRate}
+              volume={volume}
+              soundcloudConfig={soundcloudConfig}
+              vimeoConfig={vimeoConfig}
+              youtubeConfig={youtubeConfig}
+              fileConfig={fileConfig}
+              onReady={() => console.log('onReady')}
+              onStart={() => console.log('onStart')}
+              onPlay={() => this.setState({ playing: true })}
+              onPause={() => this.setState({ playing: false })}
+              onBuffer={() => console.log('onBuffer')}
+              onEnded={() => this.setState({ playing: false })}
+              onError={e => console.log('onError', e)}
+              onProgress={this.onProgress}
+              onDuration={duration => this.setState({ duration })}
+            />
+          </ReactFrame>
           <ReactPlayer
             ref={player => { this.player = player }}
             className='react-player'
@@ -159,6 +185,13 @@ export default class App extends Component {
         </section>
         <section className='section'>
           <table><tbody>
+            <tr>
+              <th>force play</th>
+              <td>
+                <button onClick={ () => this.setState({ playing: true }) }>force play</button>
+                <button onClick={ () => this.setState({ playing: false }) }>force stop</button>
+              </td>
+            </tr>
             <tr>
               <th>YouTube</th>
               <td>

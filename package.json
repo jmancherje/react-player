@@ -94,7 +94,8 @@
   "dependencies": {
     "fetch-jsonp": "^1.0.2",
     "load-script": "^1.0.0",
-    "query-string": "^4.2.3"
+    "query-string": "^4.2.3",
+    "react-frame-component": "1.0.0"
   },
   "standard": {
     "parser": "babel-eslint",
