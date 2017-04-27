@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
 import screenfull from 'screenfull'
+import ReactFrame from 'react-frame-component';
 
 import 'normalize.css/normalize.css'
 import './defaults.scss'
@@ -93,32 +94,58 @@ export default class App extends Component {
       <div className='app'>
         <section className='section'>
           <h1>ReactPlayer Demo</h1>
-          <div className='player-wrapper'>
-            <ReactPlayer
-              ref={player => { this.player = player }}
-              className='react-player'
-              width='100%'
-              height='100%'
-              url={url}
-              playing={playing}
-              playbackRate={playbackRate}
-              volume={volume}
-              soundcloudConfig={soundcloudConfig}
-              vimeoConfig={vimeoConfig}
-              youtubeConfig={youtubeConfig}
-              fileConfig={fileConfig}
-              onReady={() => console.log('onReady')}
-              onStart={() => console.log('onStart')}
-              onPlay={() => this.setState({ playing: true })}
-              onPause={() => this.setState({ playing: false })}
-              onBuffer={() => console.log('onBuffer')}
-              onEnded={() => this.setState({ playing: false })}
-              onError={e => console.log('onError', e)}
-              onProgress={this.onProgress}
-              onDuration={duration => this.setState({ duration })}
-            />
-          </div>
-
+          <h3>iFrame:</h3>
+          <ReactFrame height="350px" width="500px">
+            <div className='player-wrapper'>
+              <ReactPlayer
+                ref={player => { this.player = player }}
+                className='react-player'
+                width='100%'
+                height='100%'
+                url={url}
+                playing={playing}
+                playbackRate={playbackRate}
+                volume={volume}
+                soundcloudConfig={soundcloudConfig}
+                vimeoConfig={vimeoConfig}
+                youtubeConfig={youtubeConfig}
+                fileConfig={fileConfig}
+                onReady={() => console.log('onReady')}
+                onStart={() => console.log('onStart')}
+                onPlay={() => this.setState({ playing: true })}
+                onPause={() => this.setState({ playing: false })}
+                onBuffer={() => console.log('onBuffer')}
+                onEnded={() => this.setState({ playing: false })}
+                onError={e => console.log('onError', e)}
+                onProgress={this.onProgress}
+                onDuration={duration => this.setState({ duration })}
+              />
+            </div>
+          </ReactFrame>
+          <h3>No iFrame:</h3>
+          <ReactPlayer
+            ref={player => { this.player = player }}
+            className='react-player'
+            width='100%'
+            height='100%'
+            url={url}
+            playing={playing}
+            playbackRate={playbackRate}
+            volume={volume}
+            soundcloudConfig={soundcloudConfig}
+            vimeoConfig={vimeoConfig}
+            youtubeConfig={youtubeConfig}
+            fileConfig={fileConfig}
+            onReady={() => console.log('onReady')}
+            onStart={() => console.log('onStart')}
+            onPlay={() => this.setState({ playing: true })}
+            onPause={() => this.setState({ playing: false })}
+            onBuffer={() => console.log('onBuffer')}
+            onEnded={() => this.setState({ playing: false })}
+            onError={e => console.log('onError', e)}
+            onProgress={this.onProgress}
+            onDuration={duration => this.setState({ duration })}
+          />
           <table><tbody>
             <tr>
               <th>Controls</th>
